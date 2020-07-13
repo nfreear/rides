@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "nicks-bike-maps",
+  "repository": "https://github.com/nfreear/maps.git",
+  "scripts": {
+    "build": "node src/build-geojson.js",
+    "start": "live-server --port=9001 --no-browser"
+  },
+  "devDependencies": {
+    "@tmcw/togeojson": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "geopoint": "^1.0.1",
+    "live-server": "^1.2.1",
+    "xmldom": "^0.3.0"
+  }
+}
