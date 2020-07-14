@@ -1,8 +1,10 @@
 {
   "private": true,
-  "name": "nicks-bike-maps",
-  "repository": "https://github.com/nfreear/maps.git",
+  "name": "@nfreear/bike-ride-maps",
+  "repository": "https://github.com/nfreear/rides.git",
+  "type": "module",
   "scripts": {
+    "db:export": "node src/tracks-database.js",
     "build": "node src/build-geojson.js",
     "start": "live-server --port=9001 --no-browser"
   },
@@ -11,6 +13,8 @@
     "dotenv": "^8.2.0",
     "geopoint": "^1.0.1",
     "live-server": "^1.2.1",
+    "sqlite": "^4.0.11",
+    "sqlite3": "^5.0.0",
     "xmldom": "^0.3.0"
   }
 }

@@ -1,6 +1,7 @@
 /**
- * Build commandline (CLI) script.
- * Convert `track.gpx` to GeoJSON, excluding coordinates within a given radius of a location.
+ * Commandline (CLI) build script.
+ *
+ * Convert `track.gpx` to GeoJSON, excluding coordinates within a radius of a given location.
  *
  * @copyright Nick Freear, 13-July-2020.
  *
@@ -10,25 +11,17 @@
  * @see https://travelmath.com/cities/London,+United+Kingdom
  */
 
-const GeoPoint = require('geopoint');
+import { GeoPoint, DOMParser, ToGeoJson, loadDotEnv, makePath } from './utils.js';
+import * as fs from 'fs';
+
 // const statueOfLiberty = new GeoPoint(40.689604, -74.04455);
-const ToGeoJson = require('@tmcw/togeojson');
-const DOMParser = require('xmldom').DOMParser;
-const DotEnv = require('dotenv');
-const fs = require('fs');
-const join = require('path').join;
 
-const ENV_PATH = join(__dirname, '..', '.env');
-const result = DotEnv.config({ path: ENV_PATH });
+const { GPX_INPUT, EXCLUDE_LAT, EXCLUDE_LONG, EXCLUDE_RADIUS_KM } = loadDotEnv(); // Was: process.env()
 
-console.log('ENV:', result.parsed);
+const excludePoint = new GeoPoint(EXCLUDE_LAT, EXCLUDE_LONG);
 
-const { GPX_INPUT, EXCLUDE_LAT, EXCLUDE_LONG, EXCLUDE_RADIUS_KM } = process.env;
-
-const excludePoint = new GeoPoint(parseFloat(EXCLUDE_LAT), parseFloat(EXCLUDE_LONG));
-
-const GPX_PATH = join(__dirname, '..', GPX_INPUT, 'track.gpx');
-const GEO_JSON_PATH = join(__dirname, '..', GPX_INPUT, 'track.geojson.json');
+const GPX_PATH = makePath([ GPX_INPUT, 'track.gpx' ]);
+const GEO_JSON_PATH = makePath([ GPX_INPUT, 'track.geojson.json' ]);
 
 const features = [];
 
@@ -50,7 +43,8 @@ const distances = [];
 const includeCoords = coordinates.filter((coord, idx) => {
   const point = new GeoPoint(coord[ 1 ], coord[ 0 ]);
   const distance = excludePoint.distanceTo(point, true); // inKilometres = true;
-  const IS_INCLUDED = distance > parseFloat(EXCLUDE_RADIUS_KM);
+
+  const IS_INCLUDED = distance > EXCLUDE_RADIUS_KM;
 
   distances.push(distance);
 
@@ -78,7 +72,7 @@ for (const feature of gpxGen) {
 
 const featureCollection = { type: 'FeatureCollection', features };
 
-fs.writeFileSync(GEO_JSON_PATH, JSON.stringify(featureCollection, null, 2), 'utf8');
+fs.writeFileSync(GEO_JSON_PATH, JSON.stringify(featureCollection), 'utf8');
 
 console.log(0, 'Line string:', firstFeature);
 // console.log(1, 'Next:', gpxGen.next().value)

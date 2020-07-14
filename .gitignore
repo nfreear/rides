@@ -1,17 +1,19 @@
 
 .env
-
 /node_modules
 /lib
 .DS_Store
 package-lock.json
 
+tracks.bk
 *.gpx
 *.kml
 *.md
 *.ts
 *.zip
+*BAK*
 
-2019-*
+2019-10-02*
+2019-10-27-geojson*
 
 # End.

@@ -1,24 +1,40 @@
 {
-  "#": "...",
+  "#": "The hand-crafted ride index.",
 
-  "locations": {
-    "Broughton": [ 52.04788296483457, -0.6988184619694948 ],
-    "Salford": [ 52.0421364, -0.6352302 ]
+  "defaults": {
+    "mapId": "mapid",
+    "summaryId": "summary",
+    "centre": "Salford",
+    "zoom": 13,
+    "tileUrl": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    "tileId": "mapbox.streets",
+    "accessToken": "your.mapbox.access.token",
+    "date": "2019-10-27"
   },
 
-  "rides": {
-    "2019-10-27": {
+  "dataUrl": {
+    "db": "../data/tracks-db.json",
+    "track": "../data/{date}/track.geojson.json"
+  },
+
+  "places": [
+    { "id": "Broughton", "latLng": [ 52.04788296483457, -0.6988184619694948 ] },
+    { "id": "Salford",   "latLng": [ 52.0421364, -0.6352302 ] }
+  ],
+
+  "rides": [
+    {
+      "date": "2019-10-27",
       "title": "Marston Moretaine",
       "centre": "Salford",
       "geojson": "2019-10-27-Marston-Moretaine/2019-10-27-geojson.json",
       "summary": "2019-10-27-Marston-Moretaine/2019-10-27-summary.md"
-    },
-
-    "2020-07-13": {
-      "title": "...",
+    }, {
+      "date": "2020-07-13",
+      "title": "Broughton … Cranfield … Marston Thrift … Broughton",
       "centre": "Salford",
       "geojson": "2020-07-13/track.geojson.json",
       "summary": "2019-10-27-Marston-Moretaine/2019-10-27-summary.md"
     }
-  }
+  ]
 }
