@@ -1,7 +1,7 @@
 {
   "#": "The hand-crafted ride index.",
 
-  "defaults": {
+  "default": {
     "mapId": "mapid",
     "summaryId": "summary",
     "centre": "Salford",
@@ -13,22 +13,31 @@
   },
 
   "dataUrl": {
-    "db": "../data/tracks-db.json",
-    "track": "../data/{date}/track.geojson.json"
+    "db":    "./data/tracks-db.json",
+    "track": "./data/{date}/track.geojson.json"
   },
 
   "places": [
     { "id": "Broughton", "latLng": [ 52.04788296483457, -0.6988184619694948 ] },
-    { "id": "Salford",   "latLng": [ 52.0421364, -0.6352302 ] }
+    { "id": "Salford",   "latLng": [ 52.0421364, -0.6352302 ] },
+    { "id": "Woburn",    "latLng": [ 51.9891606, -0.6199729 ] }
   ],
 
   "rides": [
     {
+      "date": "2019-10-02",
+      "title": "Toddington (long ride!)",
+      "centre": "Woburn",
+      "zoom": 12,
+      "geojson": "2019-10-02/track.geojson.json",
+      "summary": "2019-10-02/2019-10-02-summary.md"
+    }, {
       "date": "2019-10-27",
       "title": "Marston Moretaine",
       "centre": "Salford",
-      "geojson": "2019-10-27-Marston-Moretaine/2019-10-27-geojson.json",
-      "summary": "2019-10-27-Marston-Moretaine/2019-10-27-summary.md"
+      "geojson": "2019-10-27/track.geojson.json",
+      "X-geojson": "2019-10-27/2019-10-27-geojson.json",
+      "summary": "2019-10-27/2019-10-27-summary.md"
     }, {
       "date": "2020-07-13",
       "title": "Broughton … Cranfield … Marston Thrift … Broughton",
