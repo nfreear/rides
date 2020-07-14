@@ -5,6 +5,7 @@
 .DS_Store
 package-lock.json
 
+leaflet*.js*
 tracks.bk
 *.gpx
 *.kml
@@ -13,7 +14,7 @@ tracks.bk
 *.zip
 *BAK*
 
-2019-10-02*
+2019-10-02-geojson*
 2019-10-27-geojson*
 
 # End.

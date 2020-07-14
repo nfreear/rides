@@ -77,7 +77,7 @@ export class TracksDatabase {
 
     const track = {
       _id,
-      isoTime: new Date(start_timestamp).toISOString(),
+      dateIso: new Date(start_timestamp).toISOString(), // Was: 'isoTime'
       distance: fRound(Distance / 1000), // Kilometres.
       rideTime: avgSpeed, // (string)
       avgSpeed: fRound(Time),
