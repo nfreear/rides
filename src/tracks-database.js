@@ -96,12 +96,13 @@ export class TracksDatabase {
 }
 
 function fRound (fNumber, places = 4) {
-  const FAC = Math.pow(10, places);
+  return parseFloat(Number.parseFloat(fNumber).toFixed(places));
 
-  return Math.round(parseFloat(fNumber) * FAC) / FAC;
+  /* const FAC = Math.pow(10, places);
+  return Math.round(parseFloat(fNumber) * FAC) / FAC; */
 }
 
-async function exportTracks () {
+export async function exportTracks () {
   const DB = new TracksDatabase();
 
   await DB.open();
@@ -117,8 +118,7 @@ CREATE TABLE track_details_table(_id INTEGER PRIMARY KEY AUTOINCREMENT, Time INT
 CREATE TABLE android_metadata (locale TEXT)
 */
 
-/* DB opened OK.
-Result: {
+/* Result: {
   _id: 8,
   Time: 21.871728897094727,       -- Mean speed (km/h)
   Distance: 27418.642578125,      -- (metres)
@@ -137,12 +137,4 @@ Result: {
   finish_timestamp: 1594644629049
 }                                 -- Total time = 1.48471 hours
                                   -- Pause time = 0.23109 hours, or 0:13:51 !!
-All: [
-  { _id: 1, date: '9 May 2020 11:57:55' },
-  { _id: 2, date: '10 May 2020 09:49:03' },
-  { _id: 3, date: '11 May 2020 08:19:48' },
-  { _id: 4, date: '17 May 2020 14:36:36' },
-  { _id: 5, date: '23 Jun 2020 09:27:54' },
-  { _id: 6, date: '23 Jun 2020 10:04:28' },
-  { _id: 8, date: '13 Jul 2020 12:21:24' }
-] */
+*/

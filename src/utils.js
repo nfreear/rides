@@ -1,17 +1,22 @@
+/**
+ * Build-related utilities.
+ *
+ * @copyright Nick Freear, 13-July-2020.
+ */
 
 import * as geopoint from 'geopoint';
 import togeojson from '@tmcw/togeojson';
 import xmldom from 'xmldom';
-import dotenv from 'dotenv'; // import * as DotEnv from 'dotenv';
-import { resolve } from 'path';
+import dotenv from 'dotenv';
+import * as path from 'path';
 import * as fs from 'fs';
 
 // https://nodejs.org/dist/latest-v12.x/docs/api/esm.html#esm_no_require_exports_module_exports_filename_dirname
 // import { createRequire } from 'module';
 // const __filename = fileURLToPath(import.meta.url); // >> __dirname ?
 
-console.log('ES6 modules:', geopoint, xmldom, togeojson);
-console.log(`Current directory: ${process.cwd()}`);
+// console.log('ES6 modules:', geopoint, xmldom, togeojson);
+// console.log(`Current directory: ${process.cwd()}`);
 
 const GeoPoint = geopoint.default;
 const ToGeoJson = togeojson;
@@ -31,6 +36,7 @@ function loadDotEnv () {
   return ENV;
 }
 
+// Convert from string to float, integer, etc.
 function parseEnvTypes (envParsed) {
   let envResult = {};
 
@@ -53,7 +59,7 @@ function parseEnvTypes (envParsed) {
 }
 
 function makePath (parts) {
-  return resolve(process.cwd(), ...parts);
+  return path.resolve(process.cwd(), ...parts);
 }
 
 async function writeJsonFile (filePath, data, prettyPrint = false) {

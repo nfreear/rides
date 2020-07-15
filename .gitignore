@@ -9,12 +9,11 @@ leaflet*.js*
 tracks.bk
 *.gpx
 *.kml
-*.md
 *.ts
 *.zip
 *BAK*
 
-2019-10-02-geojson*
-2019-10-27-geojson*
+*-geojson*
+*-summary*
 
 # End.
