@@ -1,0 +1,55 @@
+
+body {
+  color: #333;
+  font: 1rem sans-serif;
+  margin: .5rem;
+}
+
+#mapid { height: 680px; }
+
+#overlay a {
+  background: #fff;
+  border: 1px solid #aaa;
+  position: absolute;
+  left: 3.6rem;
+  top: 18px;
+  x-height: 2rem; x-width: 7rem;
+  padding: 5px 3px;
+  z-index: 999;
+}
+
+#summary {
+  margin: 1rem;
+}
+pre,
+#summary hr {
+  display: none;
+}
+#summary h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
+footer {
+  border-top: 6px solid #ccc;
+  margin: 2rem 1rem 1rem;
+  padding-top: 1rem;
+}
+
+.loading,
+.error {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 5rem 0;
+}
+.error { color: red; }
+
+a > img,
+p > img {
+  border: 3px solid #ccc;
+  border-radius: .5rem;
+  display: block;
+  margin: 1rem auto;
+  max-width: 580px;
+  width: 95%;
+}

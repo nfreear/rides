@@ -32,8 +32,9 @@ async function drawMap () {
   const LATLNG = INDEX.places.find(place => place.id === RIDE.centre).latLng; // Was: INDEX.locations[ RIDE.centre ];
   const ZOOM = RIDE.zoom || INDEX.default.zoom;
 
-  const GEOJSON_URL = `./data/${ RIDE.geojson }`;
-  const SUMMARY_URL = `./data/${ RIDE.summary }`;
+  const URLS = INDEX.dataUrl;
+  const GEOJSON_URL = URLS.track.replace('{date}', DATE); // `./data/${ RIDE.geojson }`;
+  const SUMMARY_URL = URLS.summary.replace('{date}', DATE); // `./data/${ RIDE.summary }`;
 
   const latLng = L.latLng(...LATLNG);
   const mymap = L.map(INDEX.default.mapId, { zoomSnap: 0.5 }).setView(latLng, ZOOM);
@@ -46,7 +47,7 @@ async function drawMap () {
   }).addTo(mymap);
 
   loadGeoJson(GEOJSON_URL, mymap);
-  // loadSummary(SUMMARY_URL);
+  loadSummary(SUMMARY_URL);
 
   if (INDEX.default.popup) {
     const popup = L.popup()

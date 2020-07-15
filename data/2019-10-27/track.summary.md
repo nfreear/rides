@@ -1,7 +1,5 @@
 
-# Marston Moretaine
-
-## 27th October 2019
+# Marston Moretaine ~ 27th October 2019 #
 
 * Ride summary:  Broughton .. Salford .. Cranfield .. Marston Moretaine .. Lidlington .. Ridgmont .. Salford .. Broughton,
 * Highlights:

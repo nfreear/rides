@@ -15,7 +15,7 @@
 
   "dataUrl": {
     "db":    "./data/tracks-db.json",
-    "summary":"./data/{data}/track.summary.md",
+    "summary":"./data/{date}/track.summary.md",
     "track": "./data/{date}/track.geojson.json"
   },
 
