@@ -20,11 +20,12 @@
   },
 
   "places": [
-    { "id": "Broughton", "latLng": [ 52.04788296483, -0.6988184619695 ] },
+    { "id": "Broughton", "latLng": [ 52.047882965, -0.69881846197 ] },
     { "id": "Eversholt", "latLng": [ 51.997273, -0.5904674 ] },
     { "id": "Salford",   "latLng": [ 52.0421364, -0.6352302 ] },
     { "id": "Woburn",    "latLng": [ 51.9891606, -0.6199729 ] },
-    { "id": "Turnpike Rd", "latLng": [ 51.994103, -0.599094 ] }
+    { "id": "Turnpike Rd", "latLng": [ 51.994103, -0.599094 ] },
+    { "id": "Gullivers", "latLng": [ 52.0512423, -0.7331201] }
   ],
 
   "rides": [
@@ -60,6 +61,11 @@
     }, {
       "date": "2020-08-01",
       "title": "Walton Hall and back quick ride"
+    }, {
+      "date": "2020-08-08",
+      "title": "Grand Union Canal, north from Woolstone to Great Linford Park, with Rosie",
+      "centre": "Gullivers",
+      "zoom": 14
     }
   ]
 }

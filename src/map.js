@@ -85,19 +85,29 @@ async function loadAllTracksJson (INDEX) {
 
 async function loadGeoJson(geoJsonUrl, mymap) {
   const response = await window.fetch(geoJsonUrl); // './data/' + RIDE.geojson);
-  console.warn('Response:', response);
 
-  const featureData = await response.json();
-  console.warn('Features:', featureData)
+  if (response.ok) {
+    const featureData = await response.json();
+    console.warn('Fetch GeoJSON features:', featureData, response);
 
-  const FEATURES_LINE = [ featureData.features[ 0 ] ];
+    const FEATURES_LINE = [ featureData.features[ 0 ] ];
 
-  L.geoJSON(FEATURES_LINE).addTo(mymap);
+    L.geoJSON(FEATURES_LINE).addTo(mymap);
+  } else {
+    console.error('Fetch GeoJSON error:', response.status, response);
+  }
 }
 
 async function loadSummary(url) {
+  const $summaryEl = document.querySelector('#summary');
   const response = await window.fetch(url);
-  const markdown = await response.text();
 
-  document.querySelector('#summary').innerHTML = Markdown.render(markdown);
+  if (response.ok) {
+    console.debug('Fetch summary response:', response);
+    const markdown = await response.text();
+    $summaryEl.innerHTML = Markdown.render(markdown);
+  } else {
+    console.error('Fetch summary error:', response.status, response);
+    $summaryEl.innerHTML = '<p class="no-summary-found">No summary found.';
+  }
 }
