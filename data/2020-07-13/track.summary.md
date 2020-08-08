@@ -24,4 +24,9 @@
 [f-web]: https://www.flickr.com/photos/33398884@N03/5873390629/
   "[0449] Ash Bud Moth (Prays fraxinella) / Field Trip - Marston Thrift - 25/06/11 ~ BY: Ben Sale (License: CC-by)"
 
+[mho]: http://www.makeham.org/odonata/libellula_depressa/libellula_depressa.shtml
+  "Bedfordshire Odonata :~ Broad-bodied Chaser - Libellula depressa: A3P4909 / Marston Thrift."
+[rwp]: https://rod-wynne-powell.blogspot.com/
+[rwp-phot]: http://fntn.co.uk/rodwp/MarstonThriftWoods-Alive/index_3.html
+
 ---

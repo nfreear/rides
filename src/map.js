@@ -9,14 +9,13 @@ const INDEX_JSON = './data/index.json';
 const DATE_PARAM_REGEX = /\?d=(\d{4}-\d{2}-\d{2})/; // Was:  /\?d=(\d+-\d+-\d+)/;
 
 const L = window.L; // Leaflet.js.
-const MD = window.markdownit();
+const Markdown = window.markdownit();
 const fetch = window.fetch;
 
 drawMap();
 
 async function drawMap () {
   const INDEX = await loadIndexJson();
-  // const TRACKS = await loadAllTracksJson(INDEX);
 
   const M_ID = window.location.href.match(DATE_PARAM_REGEX);
   const DATE = M_ID ? M_ID[ 1 ] : INDEX.default.date;
@@ -49,6 +48,11 @@ async function drawMap () {
   loadGeoJson(GEOJSON_URL, mymap);
   loadSummary(SUMMARY_URL);
 
+  const TRACKS = await loadAllTracksJson(INDEX);
+  const TRACK = TRACKS.tracks.find(track => track.dateIso.match(DATE));
+
+  console.warn('Tracks DB data:', TRACK);
+
   if (INDEX.default.popup) {
     const popup = L.popup()
       .setLatLng(latLng)
@@ -75,7 +79,7 @@ async function loadAllTracksJson (INDEX) {
   const response = await fetch(INDEX.dataUrl.db);
   const TRACKS = await response.json();
 
-  console.warn('Tracks:', TRACKS);
+  // console.warn('Tracks:', TRACKS);
   return TRACKS;
 }
 
@@ -95,5 +99,5 @@ async function loadSummary(url) {
   const response = await window.fetch(url);
   const markdown = await response.text();
 
-  document.querySelector('#summary').innerHTML = MD.render(markdown);
+  document.querySelector('#summary').innerHTML = Markdown.render(markdown);
 }

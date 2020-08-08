@@ -47,6 +47,19 @@
       "centre": "Salford",
       "geojson": "2020-07-13/track.geojson.json",
       "summary": "2020-07-13/track.summary.md"
+    },
+
+    {
+      "date": "2020-07-26",
+      "title": "Walk back from picnic in Wendover Woods (Sunday)."
+    }, {
+      "date": "2020-07-28",
+      "trackCount": 2,
+      "title": "Broughton … Cranfield … Marston Thrift … Broughton",
+      "centre": "Salford"
+    }, {
+      "date": "2020-08-01",
+      "title": "Walton Hall and back quick ride"
     }
   ]
 }
