@@ -20,8 +20,8 @@ const { GPX_INPUT, EXCLUDE_LAT, EXCLUDE_LONG, EXCLUDE_RADIUS_KM } = loadDotEnv()
 
 const excludePoint = new GeoPoint(EXCLUDE_LAT, EXCLUDE_LONG);
 
-const GPX_PATH = makePath([ 'data', `${GPX_INPUT}.gpx` ]); // Was: , 'track.gpx' ]);
-const GEO_JSON_PATH = makePath([ 'data', GPX_INPUT.replace(/(\.gpx|$)/, '.geojson.json') ]);
+const GPX_PATH = makePath(['data', `${GPX_INPUT}.gpx`]); // Was: , 'track.gpx' ]);
+const GEO_JSON_PATH = makePath(['data', GPX_INPUT.replace(/(\.gpx|$)/, '.geojson.json')]);
 
 const features = [];
 
@@ -41,7 +41,7 @@ const { type, coordinates } = firstFeature.geometry;
 const distances = [];
 
 const includeCoords = coordinates.filter((coord, idx) => {
-  const point = new GeoPoint(coord[ 1 ], coord[ 0 ]);
+  const point = new GeoPoint(coord[1], coord[0]);
   const distance = excludePoint.distanceTo(point, true); // inKilometres = true;
 
   const IS_INCLUDED = distance > EXCLUDE_RADIUS_KM;
@@ -55,13 +55,13 @@ const newFirstFeature = {
   type: 'Feature',
   properties: { time, coordTimes, speeds },
   geometry: { type, coordinates: includeCoords }
-}
+};
 
 features.push(newFirstFeature);
 
 for (const feature of gpxGen) {
   const { type, coordinates } = feature.geometry;
-  const point = new GeoPoint(coordinates[ 1 ], coordinates[ 0 ]);
+  const point = new GeoPoint(coordinates[1], coordinates[0]);
   const distance = excludePoint.distanceTo(point, true); // inKilometres = true;
   const IS_INCLUDED = distance > parseFloat(EXCLUDE_RADIUS_KM);
 
@@ -85,12 +85,12 @@ process.exit();
 
 // ---------------------------------------
 
-function* infinite() {
-    let index = 0;
+function * infinite () {
+  let index = 0;
 
-    while (true) {
-        yield index++;
-    }
+  while (true) {
+    yield index++;
+  }
 }
 
 const generator = infinite(); // "Generator { }"
@@ -102,7 +102,7 @@ console.log(generator.next().value); // 2
 
 process.exit();
 
-const kml = new DOMParser().parseFromString(fs.readFileSync("foo.kml", "utf8"));
+const kml = new DOMParser().parseFromString(fs.readFileSync('foo.kml', 'utf8'));
 
 const converted = tj.kml(kml);
 

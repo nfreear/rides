@@ -6,13 +6,16 @@
   "scripts": {
     "db:export": "node src/tracks-database.js",
     "build": "node src/build-geojson.js",
-    "start": "live-server --port=9001 --no-browser"
+    "start": "live-server --port=9001 --no-browser",
+    "fix": "semistandard --fix",
+    "test": "semistandard"
   },
   "devDependencies": {
     "@tmcw/togeojson": "^4.1.0",
     "dotenv": "^8.2.0",
     "geopoint": "^1.0.1",
     "live-server": "^1.2.1",
+    "semistandard": "^14.2.3",
     "sqlite": "^4.0.11",
     "sqlite3": "^5.0.0",
     "xmldom": "^0.3.0"

@@ -18,7 +18,7 @@ async function drawMap () {
   const INDEX = await loadIndexJson();
 
   const M_ID = window.location.href.match(DATE_PARAM_REGEX);
-  const DATE = M_ID ? M_ID[ 1 ] : INDEX.default.date;
+  const DATE = M_ID ? M_ID[1] : INDEX.default.date;
 
   const RIDE = INDEX.rides.find(ride => ride.date === DATE); // Was: INDEX.rides[ DATE ];
 
@@ -83,14 +83,14 @@ async function loadAllTracksJson (INDEX) {
   return TRACKS;
 }
 
-async function loadGeoJson(geoJsonUrl, mymap) {
+async function loadGeoJson (geoJsonUrl, mymap) {
   const response = await window.fetch(geoJsonUrl); // './data/' + RIDE.geojson);
 
   if (response.ok) {
     const featureData = await response.json();
     console.warn('Fetch GeoJSON features:', featureData, response);
 
-    const FEATURES_LINE = [ featureData.features[ 0 ] ];
+    const FEATURES_LINE = [featureData.features[0]];
 
     L.geoJSON(FEATURES_LINE).addTo(mymap);
   } else {
@@ -98,7 +98,7 @@ async function loadGeoJson(geoJsonUrl, mymap) {
   }
 }
 
-async function loadSummary(url) {
+async function loadSummary (url) {
   const $summaryEl = document.querySelector('#summary');
   const response = await window.fetch(url);
 

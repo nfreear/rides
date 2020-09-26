@@ -24,7 +24,7 @@ const ToGeoJson = togeojson;
 const { DOMParser } = xmldom;
 
 function loadDotEnv () {
-  const ENV_PATH = makePath([ '.env' ]);
+  const ENV_PATH = makePath(['.env']);
   const result = dotenv.config({ path: ENV_PATH });
   if (result.error) {
     console.error('DotEnv ERROR:', result.error);
@@ -53,20 +53,18 @@ function assertEnv (ENV) {
 
 // Convert from string to float, integer, etc.
 function parseEnvTypes (envParsed) {
-  let envResult = {};
+  const envResult = {};
 
-  Object.entries(envParsed).forEach(([ key, value ]) => {
+  Object.entries(envParsed).forEach(([key, value]) => {
     // console.log(`${key}: ${value}`);
 
     if (/^-?\d+\.\d+$/.test(value)) {
-      envResult[ key ] = parseFloat(value);
-    }
-    else if (/^-?\d+$/.test(value)) {
-      envResult[ key ] = parseInt(value);
-    }
-    else {
+      envResult[key] = parseFloat(value);
+    } else if (/^-?\d+$/.test(value)) {
+      envResult[key] = parseInt(value);
+    } else {
       // TODO: Boolean ??
-      envResult[ key ] = value;
+      envResult[key] = value;
     }
   });
 

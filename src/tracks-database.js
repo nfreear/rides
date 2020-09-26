@@ -14,10 +14,9 @@ const TRACKS_JSON = 'tracks-db.json'; // Was: tracks-bk.json';
 const TRACK_TABLE = 'track_details_table';
 
 export class TracksDatabase {
-
   getDbPath () {
     const { TRACKS_SQLITE } = loadDotEnv();
-    const DB_PATH = makePath([ TRACKS_SQLITE ]);
+    const DB_PATH = makePath([TRACKS_SQLITE]);
 
     console.log('DB path:', DB_PATH);
     return DB_PATH;
@@ -36,7 +35,7 @@ export class TracksDatabase {
   }
 
   async exportTracksJson () {
-    const JSON_PATH = makePath([ 'data', TRACKS_JSON ]);
+    const JSON_PATH = makePath(['data', TRACKS_JSON]);
 
     const dbResult = await this.db.all(
       `SELECT * FROM ${TRACK_TABLE}
@@ -82,14 +81,20 @@ export class TracksDatabase {
       rideTime: avgSpeed, // (string)
       avgSpeed: fRound(Time),
       maxSpeed: fRound(maxspeed),
-      date, max_altitude, min_altitude,
+      date,
+      max_altitude,
+      min_altitude,
       arrivalTime: start_time, // UTC + 1 = BST (string).
-      final_alt, initial_alt,
+      final_alt,
+      initial_alt,
       calorie_count: fRound(calorie_count),
       note_text: note_text ? note_text.replace(/\.\.+/g, '…') : null,
-      start_timestamp, elapsed_seconds, finish_timestamp,
-      totalSeconds, pauseSeconds
-    }
+      start_timestamp,
+      elapsed_seconds,
+      finish_timestamp,
+      totalSeconds,
+      pauseSeconds
+    };
 
     this.data.tracks.push(track);
   }
