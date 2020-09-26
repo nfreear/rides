@@ -7,7 +7,6 @@
 import { loadDotEnv, makePath, writeJsonFile } from './utils.js';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
-import * as fs from 'fs';
 
 const TRACKS_JSON = 'tracks-db.json'; // Was: tracks-bk.json';
 // const TRACKS_SQLITE='/Users/XXX/Downloads/tracks.bk';
@@ -62,6 +61,7 @@ export class TracksDatabase {
     console.log('JSON tracks file written:', JSON_PATH);
   }
 
+  /* eslint camelcase: ["warn", {ignoreDestructuring: true}] */
   fixTrack (dbRow, idx) {
     const {
       _id, Time, Distance, avgSpeed, maxspeed, date,

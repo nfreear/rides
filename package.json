@@ -7,8 +7,7 @@
     "db:export": "node src/tracks-database.js",
     "build": "node src/build-geojson.js",
     "start": "live-server --port=9001 --no-browser",
-    "fix": "semistandard --fix",
-    "test": "semistandard"
+    "test": "semistandard --fix"
   },
   "devDependencies": {
     "@tmcw/togeojson": "^4.1.0",

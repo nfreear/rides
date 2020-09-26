@@ -58,7 +58,11 @@ async function drawMap () {
       .setLatLng(latLng)
       .setContent('<p>Hello world!<br />"X" marks the centre.</p>')
       .openOn(mymap);
+
+    return { mymap, popup };
   }
+
+  return { mymap };
 }
 
 function errorNoRide (DATE, INDEX) {

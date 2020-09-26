@@ -60,7 +60,7 @@ const newFirstFeature = {
 features.push(newFirstFeature);
 
 for (const feature of gpxGen) {
-  const { type, coordinates } = feature.geometry;
+  const { /* type, */ coordinates } = feature.geometry;
   const point = new GeoPoint(coordinates[1], coordinates[0]);
   const distance = excludePoint.distanceTo(point, true); // inKilometres = true;
   const IS_INCLUDED = distance > parseFloat(EXCLUDE_RADIUS_KM);
@@ -81,29 +81,4 @@ console.log(0, 'Line string:', firstFeature);
 console.log('Distances:', distances);
 console.log('Coordinates:', coordinates.length, includeCoords.length);
 
-process.exit();
-
-// ---------------------------------------
-
-function * infinite () {
-  let index = 0;
-
-  while (true) {
-    yield index++;
-  }
-}
-
-const generator = infinite(); // "Generator { }"
-
-console.log(generator.next().value); // 0
-console.log(generator.next().value); // 1
-console.log(generator.next().value); // 2
-// ...
-
-process.exit();
-
-const kml = new DOMParser().parseFromString(fs.readFileSync('foo.kml', 'utf8'));
-
-const converted = tj.kml(kml);
-
-const convertedWithStyles = tj.kml(kml, { styles: true });
+/** @note ~ Unused code moved to `src/unused.js` */

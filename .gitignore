@@ -3,7 +3,7 @@
 /node_modules
 /lib
 .DS_Store
-package-lock.json
+# package-lock.json
 
 leaflet*.js*
 tracks*.bk
