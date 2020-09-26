@@ -20,8 +20,8 @@ const { GPX_INPUT, EXCLUDE_LAT, EXCLUDE_LONG, EXCLUDE_RADIUS_KM } = loadDotEnv()
 
 const excludePoint = new GeoPoint(EXCLUDE_LAT, EXCLUDE_LONG);
 
-const GPX_PATH = makePath([ GPX_INPUT, 'track.gpx' ]);
-const GEO_JSON_PATH = makePath([ GPX_INPUT, 'track.geojson.json' ]);
+const GPX_PATH = makePath([ GPX_INPUT ]); // Was: , 'track.gpx' ]);
+const GEO_JSON_PATH = makePath([ GPX_INPUT.replace('.gpx', '.geojson.json') ]);
 
 const features = [];
 
