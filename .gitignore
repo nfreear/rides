@@ -13,7 +13,7 @@ tracks*.bk
 *.zip
 *BAK*
 
-*-geojson*
+*-geojson.json
 *-summary*
 
 # End.

@@ -52,7 +52,7 @@
 
     {
       "date": "2020-07-26",
-      "title": "Walk back from picnic in Wendover Woods (Sunday)."
+      "title": "Walk back from picnic in Wendover Woods (Sunday) (Rosie, Gy)"
     }, {
       "date": "2020-07-28",
       "trackCount": 2,
@@ -73,6 +73,15 @@
       "trackCount": 2,
       "title": "Lap the Lake, Caldecotte Lake",
       "centre": "Gullivers"
-    }
+    },
+
+    { "date": "2020-08-15", "title": "Car ?" },
+    { "date": "2020-08-16", "title": "Bike ride " },
+    { "date": "2020-08-27", "title": "Aylesbury car ?" },
+    { "date": "2020-09-08", "title": "KHP, with Rosie ?"},
+    { "date": "2020-09-17", "title": "Willen Lakes (solo)" },
+    { "date": "2020-09-25", "title": "Windy Woughton (solo)" },
+
+    { "date": "2020-", "title": "" }
   ]
 }
