@@ -10,6 +10,7 @@ import xmldom from 'xmldom';
 import dotenv from 'dotenv';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as assert from 'assert';
 
 // https://nodejs.org/dist/latest-v12.x/docs/api/esm.html#esm_no_require_exports_module_exports_filename_dirname
 // import { createRequire } from 'module';
@@ -33,6 +34,20 @@ function loadDotEnv () {
   const ENV = parseEnvTypes(result.parsed);
 
   console.log('ENV:', ENV);
+
+  return assertEnv(ENV);
+}
+
+function assertEnv (ENV) {
+  const {
+    TRACKS_SQLITE, GPX_INPUT, EXCLUDE_LAT, EXCLUDE_LONG, EXCLUDE_RADIUS_KM
+  } = ENV;
+
+  assert.ok(EXCLUDE_RADIUS_KM && EXCLUDE_RADIUS_KM > 0, 'EXCLUDE_RADIUS_KM');
+  assert.ok(EXCLUDE_LAT && EXCLUDE_LAT !== 0, 'EXCLUDE_LAT');
+  assert.ok(EXCLUDE_LONG && EXCLUDE_LONG !== 0, 'EXCLUDE_LONG');
+  assert.ok(GPX_INPUT && GPX_INPUT !== '', 'GPX_INPUT');
+  assert.ok(TRACKS_SQLITE && TRACKS_SQLITE !== '', 'TRACKS_SQLITE');
   return ENV;
 }
 
@@ -43,10 +58,10 @@ function parseEnvTypes (envParsed) {
   Object.entries(envParsed).forEach(([ key, value ]) => {
     // console.log(`${key}: ${value}`);
 
-    if (/^-?\d+\.\d+/.test(value)) {
+    if (/^-?\d+\.\d+$/.test(value)) {
       envResult[ key ] = parseFloat(value);
     }
-    else if (/^-?\d+/.test(value)) {
+    else if (/^-?\d+$/.test(value)) {
       envResult[ key ] = parseInt(value);
     }
     else {

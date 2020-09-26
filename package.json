@@ -16,5 +16,9 @@
     "sqlite": "^4.0.11",
     "sqlite3": "^5.0.0",
     "xmldom": "^0.3.0"
+  },
+  "peerDependencies": {
+    "leaflet": "^1.6.0",
+    "markdown-it": "^10.0.0"
   }
 }
