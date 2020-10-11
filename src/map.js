@@ -48,10 +48,7 @@ async function drawMap () {
   loadGeoJson(GEOJSON_URL, mymap);
   loadSummary(SUMMARY_URL);
 
-  const TRACKS = await loadAllTracksJson(INDEX);
-  const TRACK = TRACKS.tracks.find(track => track.dateIso.match(DATE));
-
-  console.warn('Tracks DB data:', TRACK);
+  loadTrackJson(INDEX, RIDE, DATE);
 
   if (INDEX.default.popup) {
     const popup = L.popup()
@@ -87,6 +84,48 @@ async function loadAllTracksJson (INDEX) {
   return TRACKS;
 }
 
+async function loadTrackJson (INDEX, RIDE, DATE) {
+  const TRACKS_DB = await loadAllTracksJson(INDEX);
+  const TRACK = TRACKS_DB.tracks.find(track => track.dateIso.match(DATE));
+
+  console.warn('Tracks DB data:', TRACK);
+
+  const TEMPLATE = document.querySelector('#track-template');
+  const TRACK_DIV = document.querySelector('#track-db'); // Useful ??
+  const CLONE = TEMPLATE.content.cloneNode(true);
+
+  const result = trackTemplate(TRACK, RIDE);
+
+  TRACK_DIV.innerHTML = Markdown.render(result);
+
+  // tag`${CLONE}${TRACK}`;
+  // TRACK_PRE.textContent = JSON.stringify(TRACK, null, '\t');
+}
+
+const trackTemplate = (TRK, RIDE) => `
+| Title:      | ${RIDE.title}        |
+|-------------|----------------------|
+| Start date: | ${TRK.date}          |
+| Ride time:  | ${TRK.rideTime}      |
+| Distance:   | ${TRK.distance} km   |
+| Mean speed: | ${TRK.avgSpeed} km/h |
+| Max speed:  | ${TRK.maxSpeed} km/h |
+| Paused:     | ${fRound(TRK.pauseSeconds / 60)} minutes |
+
+\`\`\`
+${JSON.stringify(TRK, null, '\t')}
+\`\`\`
+`;
+// | <!-- Total time: ${fRound(TRK.totalSeconds / 60)} minutes-->
+// <!-- <ul> <li> TEST </ul> -->
+
+function htmlTag (strings, template, data) {
+  // console.log(strings.raw[0]);
+  console.debug('TAG:', strings, template, data, template.raw)
+
+  // template`${data.maxSpeed}`;
+}
+
 async function loadGeoJson (geoJsonUrl, mymap) {
   const response = await window.fetch(geoJsonUrl); // './data/' + RIDE.geojson);
 
@@ -114,4 +153,8 @@ async function loadSummary (url) {
     console.error('Fetch summary error:', response.status, response);
     $summaryEl.innerHTML = '<p class="no-summary-found">No summary found.';
   }
+}
+
+function fRound (fNumber, places = 2) {
+  return parseFloat(Number.parseFloat(fNumber).toFixed(places));
 }

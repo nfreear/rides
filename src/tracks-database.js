@@ -82,11 +82,11 @@ export class TracksDatabase {
       avgSpeed: fRound(Time),
       maxSpeed: fRound(maxspeed),
       date,
-      max_altitude,
-      min_altitude,
+      max_altitude: fRound(max_altitude),
+      min_altitude: fRound(min_altitude),
       arrivalTime: start_time, // UTC + 1 = BST (string).
-      final_alt,
-      initial_alt,
+      final_alt: fRound(final_alt),
+      initial_alt: fRound(final_alt),
       calorie_count: fRound(calorie_count),
       note_text: note_text ? note_text.replace(/\.\.+/g, '…') : null,
       start_timestamp,
@@ -100,7 +100,7 @@ export class TracksDatabase {
   }
 }
 
-function fRound (fNumber, places = 4) {
+function fRound (fNumber, places = 3) {
   return parseFloat(Number.parseFloat(fNumber).toFixed(places));
 
   /* const FAC = Math.pow(10, places);

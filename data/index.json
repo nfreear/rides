@@ -4,19 +4,21 @@
   "default": {
     "mapId": "mapid",
     "summaryId": "summary",
+    "trackDbId": "track-db",
     "centre": "Salford",
     "zoom": 13,
     "tileUrl": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     "tileId": "mapbox.streets",
     "accessToken": "your.mapbox.access.token",
-    "date": "2019-10-27",
+    "date": "2020-10-11",
+    "X_date": "2019-10-27",
     "popup": false
   },
 
   "dataUrl": {
     "db":    "./data/tracks-db.json",
     "summary":"./data/{date}/track.summary.md",
-    "track": "./data/{date}/track.geojson.json"
+    "track": "./data/{date}/track-01.geojson.json"
   },
 
   "places": [
@@ -84,7 +86,7 @@
     { "date": "2020-09-25", "title": "Windy Woughton-on-the-Green, via Riverside Park (solo)" },
 
     { "date": "2020-10-09", "title": "To the OU." },
-    { "date": "2020-10-11", "title": "Cranfield... Marston Thrift... Wavendon... back of Kingston... Broughton Brook", "centre": "Salford" },
+    { "date": "2020-10-11", "title": "Monkston… Brooklands… Salford… Cranfield… Marston Thrift… Brogborough… Salford… Eagle Farm… back of Kingston… Broughton Brook", "centre": "Salford" },
 
     { "date": "2020-", "title": "" }
   ]

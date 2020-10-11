@@ -2,7 +2,15 @@
 body {
   color: #333;
   font: 1rem sans-serif;
-  margin: .5rem;
+  padding: 0;
+  margin: 0 auto;
+  min-width: 40rem;
+  /* max-width: 100rem; */
+}
+
+article,
+footer {
+  margin: 1rem;
 }
 
 #mapid { height: 720px; }
@@ -21,7 +29,7 @@ body {
 #summary {
   margin: 1rem;
 }
-pre,
+.hide,
 #summary hr {
   display: none;
 }
@@ -52,4 +60,44 @@ p > img {
   margin: 1rem auto;
   max-width: 580px;
   width: 95%;
+}
+
+table {
+  background: #e8e8e8;
+  border-spacing: 0;
+  font-size: small;
+  min-width: 40rem;
+}
+table th {
+  text-align: left;
+}
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: .4rem;
+}
+
+pre {
+  font-size: x-small;
+}
+
+/* Unused */
+dl {
+  line-height: 1rem;
+  list-style-type: disc;
+  padding-left: 40px;
+}
+dl > dt {
+  display: list-item;
+  width: 6rem;
+}
+dl > dd {
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  margin-inline-start: 0;
+  padding: 0;
+  top: -1.5rem;
+  left: 7rem;
+  width: 20rem;
 }
