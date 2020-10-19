@@ -4,17 +4,36 @@
  * @copyright Nick Freear, 27-Oct-2019, 13-July-2020.
  */
 
+import { loadLeafletScript } from './load-script.js';
+import { MapUtil } from './map-util.js';
+import { trackDataTemplate } from './track-data-template.js';
+
 const INDEX_JSON = './data/index.json';
 // const DATE_PARAM_REGEX = /\?d=(20\d{2}-[01]\d-\d{2})/;
 const DATE_PARAM_REGEX = /\?d=(\d{4}-\d{2}-\d{2})/; // Was:  /\?d=(\d+-\d+-\d+)/;
 
-const L = window.L; // Leaflet.js.
+let L = null; // Leaflet.js.
 const Markdown = window.markdownit();
 const fetch = window.fetch;
 
-drawMap();
+(async () => {
+  try {
+    const result = await loadLeafletScript();
 
-async function drawMap () {
+    const LS = window.L; // Leaflet.js.
+    L = window.L;
+
+    console.warn('Leaflet.js loaded OK:', LS.version, result);
+
+    drawMap(LS);
+  } catch (err) {
+    console.error('ERROR:', err);
+  }
+})();
+
+async function drawMap (L) {
+  const util = new MapUtil();
+
   const INDEX = await loadIndexJson();
 
   const M_ID = window.location.href.match(DATE_PARAM_REGEX);
@@ -47,17 +66,11 @@ async function drawMap () {
 
   loadGeoJson(GEOJSON_URL, mymap);
   loadSummary(SUMMARY_URL);
-
   loadTrackJson(INDEX, RIDE, DATE);
 
-  if (INDEX.default.popup) {
-    const popup = L.popup()
-      .setLatLng(latLng)
-      .setContent('<p>Hello world!<br />"X" marks the centre.</p>')
-      .openOn(mymap);
+  util.addDirectionArrow(mymap, latLng);
 
-    return { mymap, popup };
-  }
+  util.demoPopup(mymap, latLng, INDEX);
 
   return { mymap };
 }
@@ -90,40 +103,16 @@ async function loadTrackJson (INDEX, RIDE, DATE) {
 
   console.warn('Tracks DB data:', TRACK);
 
-  const TEMPLATE = document.querySelector('#track-template');
   const TRACK_DIV = document.querySelector('#track-db'); // Useful ??
-  const CLONE = TEMPLATE.content.cloneNode(true);
+  // const TEMPLATE = document.querySelector('#track-template');
+  // const CLONE = TEMPLATE.content.cloneNode(true);
 
-  const result = trackTemplate(TRACK, RIDE);
+  const markdown = trackDataTemplate(TRACK, RIDE);
 
-  TRACK_DIV.innerHTML = Markdown.render(result);
+  TRACK_DIV.innerHTML = Markdown.render(markdown);
 
   // tag`${CLONE}${TRACK}`;
   // TRACK_PRE.textContent = JSON.stringify(TRACK, null, '\t');
-}
-
-const trackTemplate = (TRK, RIDE) => `
-| Title:      | ${RIDE.title}        |
-|-------------|----------------------|
-| Start date: | ${TRK.date}          |
-| Ride time:  | ${TRK.rideTime}      |
-| Distance:   | ${TRK.distance} km   |
-| Mean speed: | ${TRK.avgSpeed} km/h |
-| Max speed:  | ${TRK.maxSpeed} km/h |
-| Paused:     | ${fRound(TRK.pauseSeconds / 60)} minutes |
-
-\`\`\`
-${JSON.stringify(TRK, null, '\t')}
-\`\`\`
-`;
-// | <!-- Total time: ${fRound(TRK.totalSeconds / 60)} minutes-->
-// <!-- <ul> <li> TEST </ul> -->
-
-function htmlTag (strings, template, data) {
-  // console.log(strings.raw[0]);
-  console.debug('TAG:', strings, template, data, template.raw)
-
-  // template`${data.maxSpeed}`;
 }
 
 async function loadGeoJson (geoJsonUrl, mymap) {
@@ -153,8 +142,4 @@ async function loadSummary (url) {
     console.error('Fetch summary error:', response.status, response);
     $summaryEl.innerHTML = '<p class="no-summary-found">No summary found.';
   }
-}
-
-function fRound (fNumber, places = 2) {
-  return parseFloat(Number.parseFloat(fNumber).toFixed(places));
 }

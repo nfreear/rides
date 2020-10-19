@@ -6,6 +6,7 @@
 # package-lock.json
 
 leaflet*.js*
+leaflet*.css
 tracks*.bk
 *.gpx
 *.kml
