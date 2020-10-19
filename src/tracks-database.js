@@ -86,7 +86,7 @@ export class TracksDatabase {
       min_altitude: fRound(min_altitude),
       arrivalTime: start_time, // UTC + 1 = BST (string).
       final_alt: fRound(final_alt),
-      initial_alt: fRound(final_alt),
+      initial_alt: fRound(initial_alt),
       calorie_count: fRound(calorie_count),
       note_text: note_text ? note_text.replace(/\.\.+/g, '…') : null,
       start_timestamp,
