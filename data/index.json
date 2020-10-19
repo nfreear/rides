@@ -87,6 +87,9 @@
 
     { "date": "2020-10-09", "title": "To the OU." },
     { "date": "2020-10-11", "title": "Monkston… Brooklands… Salford… Cranfield… Marston Thrift… Brogborough… Salford… Eagle Farm… back of Kingston… Broughton Brook", "centre": "Salford" },
+    { "date": "2020-10-16", "title": "?" },
+    { "date": "2020-10-18", "title": "Round Willen Lakes quickie (clockwise)." },
+    { "date": "2020-10-19", "title": "To the OU via Brickhill; return via the river.", "trackCount": 2 },
 
     { "date": "2020-", "title": "" }
   ]
