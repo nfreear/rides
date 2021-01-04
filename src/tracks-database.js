@@ -45,10 +45,17 @@ export class TracksDatabase {
 
     this.data = {
       '#': `AUTO-GENERATED ~ ${new Date().toISOString()}`,
+      totalDistanceKm: null,
       tracks: []
     };
 
     dbResult.forEach((res, idx) => this.fixTrack(res, idx));
+
+    const totalDistance = dbResult.reduce((accumulator, { Distance }) => {
+      return accumulator + Distance;
+    }, 0);
+
+    this.data.totalDistanceKm = fRound(totalDistance / 1000);
 
     // console.log('DB result:', this.data.tracks);
 
@@ -59,6 +66,8 @@ export class TracksDatabase {
     await writeJsonFile(JSON_PATH, this.data, true);
 
     console.log('JSON tracks file written:', JSON_PATH);
+
+    console.log('Total distance, km:', totalDistance / 1000);
   }
 
   /* eslint camelcase: ["warn", {ignoreDestructuring: true}] */
