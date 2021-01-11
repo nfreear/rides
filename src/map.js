@@ -47,7 +47,9 @@ async function drawMap (L) {
     return errorNoRide(DATE, INDEX);
   }
 
-  const LATLNG = INDEX.places.find(place => place.id === RIDE.centre).latLng; // Was: INDEX.locations[ RIDE.centre ];
+  const CENTRE = RIDE.centre || INDEX.default.centre;
+
+  const LATLNG = INDEX.places.find(place => place.id === CENTRE).latLng; // Was: INDEX.locations[ RIDE.centre ];
   const ZOOM = RIDE.zoom || INDEX.default.zoom;
 
   const URLS = INDEX.dataUrl;
