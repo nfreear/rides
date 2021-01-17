@@ -24,7 +24,7 @@ export async function loadLeafletScript () {
 // -----------------------------------------
 
 export class MyLoadError extends Error {
-  constructor (message = null, src, event) {
+  constructor (message = null, src = null, event = null) {
     message = message || 'Error loading Javascript.';
     super(message);
     this.name = 'MyLoadError';

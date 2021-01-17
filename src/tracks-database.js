@@ -4,6 +4,8 @@
  * @copyright Nick Freear, 13-July-2020.
  */
 
+/* eslint-disable camelcase */
+
 import { loadDotEnv, makePath, writeJsonFile } from './utils.js';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
