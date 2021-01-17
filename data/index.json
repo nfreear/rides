@@ -97,8 +97,10 @@
 
     { "date": "2020-12-26", "title": "Simpson on Boxing Day with Rosie" },
     { "date": "2020-12-29", "title": "Marston Thrift solo", "conditions": "Cold, 2°C ?! Frozen toes!" },
+    { "date": "2021-01-01", "title": "Aylesbury car.", "exclude": true },
     { "date": "2021-01-02", "title": "Newport Pagnell New Year ride with Andrew B.", "conditions": "Cloudy, dry, muddy, cold, 2°C ?! Overshoes", "centre": "Gullivers", "zoom": 14 },
     { "date": "2021-01-09", "title": "TODO ~~ Newport Pagnell… Grand Union Broadwalk with Rosie", "conditions": "muddy, cold, ~0°C ?", "centre": "Gullivers", "zoom": 14 },
+    { "date": "2021-01-17", "title": "Newport Pagnell… Grand Union Broadwalk with Rosie", "conditions": "muddy, mild, ~6°C ?", "centre": "Gullivers", "zoom": 14 },
 
     { "date": "2021-", "title": "" }
   ]

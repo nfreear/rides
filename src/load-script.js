@@ -59,7 +59,8 @@ export async function loadScript (CFG = {}) {
     };
 
     SCR.src = TO_LOAD.src;
-    SCR.integrity = TO_LOAD.integrity || '';
+    // Error: "Subresource Integrity: The resource 'https://unpkg.com/.../leaflet.js' has an integrity attribute, but the resource requires the request to be CORS enabled to check the integrity, and it is not. The resource has been blocked because the integrity cannot be enforced."
+    // Was: SCR.integrity = TO_LOAD.integrity || '';
     SCR.crossorigin = TO_LOAD.crossorigin || '';
 
     /*

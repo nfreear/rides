@@ -20,7 +20,7 @@
     "xmldom": "^0.3.0"
   },
   "peerDependencies": {
-    "leaflet": "^1.6.0",
+    "leaflet": "^1.7.1",
     "markdown-it": "^10.0.0"
   }
 }
