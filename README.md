@@ -1,3 +1,4 @@
+[![Test status][ci-badge]][ci]
 
 # @nfreear/rides
 
@@ -19,9 +20,12 @@ Uses:
  * `markdown-it` (peer)
  * ES6 modules
 
-© N Freear, 27-Oct-2019, 2020.
+© N Freear, 27-Oct-2019, 2020, 2021.
 
 [app]: https://play.google.com/store/apps/details?id=com.fehmin.bikeometer&
   "Bike Computer - GPS Cycling Tracker, on Google Play / Android"
 [leaflet]: https://leafletjs.com/
   "An open-source JavaScript library for mobile-friendly interactive maps"
+
+[ci]: https://github.com/nfreear/rides/actions "Node.js CI — status"
+[ci-badge]: https://github.com/nfreear/rides/workflows/Node.js%20CI/badge.svg)
